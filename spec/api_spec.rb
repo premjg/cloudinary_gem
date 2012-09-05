@@ -136,4 +136,11 @@ describe Cloudinary::Api do
     lambda{@api.transformation("c_scale,w_100")}.should raise_error(Cloudinary::Api::NotFound)
   end
 
+  it "should allow adding tags" do
+    @api.create_tag("api_test", 'awesome')
+    resource = @api.resource("api_test")
+    puts resource.to_yaml
+    # lambda{@api.resource("api_test3")}.should raise_error(Cloudinary::Api::NotFound)
+  end
+
 end
